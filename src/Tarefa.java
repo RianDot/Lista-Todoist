@@ -10,6 +10,7 @@ public class Tarefa extends Adicionar {
         super(nome, mensagem);
         this.prazo = prazo;
     }
+
     public String getTempoRestante() {
         LocalDateTime agora = LocalDateTime.now();
 
@@ -30,8 +31,9 @@ public class Tarefa extends Adicionar {
         return String.format("Voce tem %dh e %dmin ate %s",
                 horas, minutos, prazo.format(formatoData));
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return super.toString() + " | Prazo: " + prazo.format(formatoData) + " | " + getTempoRestante();
     }
 }

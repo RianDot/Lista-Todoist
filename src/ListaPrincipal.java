@@ -8,8 +8,8 @@ public class ListaPrincipal {
         Adicionar novaTarefa;
         novaTarefa = new Tarefa("Trabalho de Historia",
                 "Estudar sobre a USSR durante a Guerra Fria", LocalDateTime.of(2026,9,25,14,0));
-       novaTarefa.addTarefa();
-        System.out.println(novaTarefa.toString());
-
+        novaTarefa.addTarefa();
+        novaTarefa.tarefaPendente();
+        novaTarefa.tarefaConcluida();
     }
 }
