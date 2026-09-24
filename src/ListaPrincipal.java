@@ -6,8 +6,8 @@ public class ListaPrincipal {
     static void main(String[] args) {
         ArrayList<Tarefa> tarefasArrayList = new ArrayList<>();
         Adicionar novaTarefa;
-        novaTarefa = new Tarefa("Trabalho de Historia",
-                "Estudar sobre a USSR durante a Guerra Fria", LocalDateTime.of(2026,9,25,14,0));
+        novaTarefa = new Tarefa("Entregar Trabalho de Historia",
+                "Sobre a USSR durante a Guerra Fria", LocalDateTime.of(2026,9,28,14,0));
         novaTarefa.addTarefa();
         novaTarefa.tarefaPendente();
         novaTarefa.tarefaConcluida();
