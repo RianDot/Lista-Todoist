@@ -1,6 +1,6 @@
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class TarefaMarcada extends Adicionar {
     private DateTimeFormatter formatoDia = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -18,20 +18,14 @@ public class TarefaMarcada extends Adicionar {
             return "Prazo expirado!";
         }
 
-        Duration diaDoCompromisso = Duration.between(diaDeHoje, diaMarcado);
-        long dias = diaDoCompromisso.toDays();
-        long horas = diaDoCompromisso.toHoursPart();
+        long dias = ChronoUnit.DAYS.between(diaDeHoje, diaMarcado);
 
-        if (dias > 0) {
-            return String.format("Voce tem %dd, %dh ate %s",
-                    dias, horas, diaMarcado.format(formatoDia));
-        }
-
-        return String.format("Voce tem %dh ate %s",
-                horas, diaMarcado.format(formatoDia));
+        return String.format("Voce tem %dd ate %s", dias, diaMarcado.format(formatoDia));
     }
+
     @Override
     public String toString() {
-        return super.toString() + " | Dias até o compromisso: " + diaMarcado.format(formatoDia) + " | " + getDiasRestante();
+        return super.toString() + " | Dia do compromisso: " + diaMarcado.format(formatoDia)
+                + " | " + getDiasRestante();
     }
 }
