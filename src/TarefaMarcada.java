@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class TarefaMarcada extends Adicionar {
+public class TarefaMarcada extends Adicionar implements Cronometravel {
     private DateTimeFormatter formatoDia = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     protected LocalDate diaMarcado;
 
@@ -11,6 +11,10 @@ public class TarefaMarcada extends Adicionar {
         this.diaMarcado = diaMarcado;
     }
 
+    @Override
+    public boolean estaPendente() {
+        return !diaMarcado.isBefore(LocalDate.now());
+    }
     public String getDiasRestante() {
         LocalDate diaDeHoje = LocalDate.now();
 
