@@ -2,7 +2,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Tarefa extends Adicionar {
+public class Tarefa extends Adicionar implements Cronometravel {
     private DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     protected LocalDateTime prazo;
 
@@ -11,6 +11,14 @@ public class Tarefa extends Adicionar {
         this.prazo = prazo;
     }
 
+    public LocalDateTime getPrazo() {
+        return prazo;
+    }
+
+    @Override
+    public boolean estaPendente() {
+        return !prazo.isBefore(LocalDateTime.now());
+    }
     public String getTempoRestante() {
         LocalDateTime agora = LocalDateTime.now();
 
@@ -34,6 +42,8 @@ public class Tarefa extends Adicionar {
 
     @Override
     public String toString() {
-        return super.toString() + " | Prazo: " + prazo.format(formatoData) + " | " + getTempoRestante();
+        return super.toString() + " | Prazo: " + prazo.format(formatoData)
+                + " | " + getTempoRestante();
     }
+
 }
