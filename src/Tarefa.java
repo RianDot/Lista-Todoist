@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Tarefa extends Adicionar implements Cronometravel {
     private DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
     protected LocalDateTime prazo;
 
     public Tarefa(String nome, String mensagem, LocalDateTime prazo) {
@@ -19,6 +20,7 @@ public class Tarefa extends Adicionar implements Cronometravel {
     public boolean estaPendente() {
         return !prazo.isBefore(LocalDateTime.now());
     }
+
     public String getTempoRestante() {
         LocalDateTime agora = LocalDateTime.now();
 
@@ -45,5 +47,5 @@ public class Tarefa extends Adicionar implements Cronometravel {
         return super.toString() + " | Prazo: " + prazo.format(formatoData)
                 + " | " + getTempoRestante();
     }
-
 }
+
